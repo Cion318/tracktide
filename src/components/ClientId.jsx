@@ -1,19 +1,22 @@
 import { faRightToBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
-function ClientId({ onCheckClientId }) {
-  const [clientIdValue, setClientIdValue] = useState("");
+function ClientId({ onSubmit }) {
+  const [clientId, setClientId] = useState("");
 
-  const handleClientIdChange = (event) => {
-    setClientIdValue(event.target.value);
-  };
+  const handleChange = useCallback((e) => {
+    setClientId(e.target.value);
+  }, []);
 
-  const handleClientIdCheck = (event) => {
-    event.preventDefault();
-    onCheckClientId(clientIdValue);
-  };
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      onSubmit(clientId);
+    },
+    [clientId, onSubmit],
+  );
 
   return (
     <div className="flex justify-center">
@@ -41,7 +44,7 @@ function ClientId({ onCheckClientId }) {
 
         {/* Bottom Section (1/3) */}
         <div className="h-1/3 rounded-b-lg bg-blue-600 bg-opacity-50 p-4">
-          <form onSubmit={handleClientIdCheck}>
+          <form onSubmit={handleSubmit}>
             <div>
               <div className="flex">
                 <input
@@ -49,9 +52,9 @@ function ClientId({ onCheckClientId }) {
                   type="text"
                   name="name"
                   autoComplete="off"
-                  value={clientIdValue}
                   placeholder="Your Client Id"
-                  onChange={handleClientIdChange}
+                  value={clientId}
+                  onChange={handleChange}
                 />
                 <button
                   className="focus:shadow-outline ml-1 rounded bg-blue-500 px-4 py-2 font-bold text-gray-100 hover:bg-zinc-800 focus:outline-none"
@@ -71,7 +74,7 @@ function ClientId({ onCheckClientId }) {
 }
 
 ClientId.propTypes = {
-  onCheckClientId: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default ClientId;
