@@ -1,10 +1,11 @@
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Dashboard from "./pages/Dashboard";
+import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
+import Main from "./pages/Main";
 
 function App() {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const checkClientId = (clientId) => {
     if (clientId === "123456") {
@@ -14,9 +15,10 @@ function App() {
 
   return (
     <BrowserRouter>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home checkClientId={checkClientId} />} />
-        <Route path="/dashboard" element={<Dashboard clientId={"123456"} />} />
+        <Route path="/dashboard" element={<Main clientId={"123456"} />} />
       </Routes>
     </BrowserRouter>
   );
