@@ -1,4 +1,4 @@
-const redirectUri = "http://localhost:5173/"; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
+const redirectUri = "http://localhost:5173/main/"; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
 //const redirectUri = "https://cion318.github.io/jammming-react/";
 let accessToken;
 
@@ -19,26 +19,6 @@ const Spotify = {
     } else {
       const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
       window.location = accessUrl;
-    }
-  },
-
-  async checkAccess(clientId) {
-    const accessToken = Spotify.getAccessToken(clientId);
-    try {
-      const result = await fetch("https://api.spotify.com/v1/me", {
-        method: "GET",
-        headers: { Authorization: `Bearer ${accessToken}` },
-      });
-
-      if (result.ok) {
-        await result.json();
-        return true;
-      } else {
-        return false;
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      return false;
     }
   },
 
