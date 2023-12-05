@@ -8,10 +8,10 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="navbar flex w-full items-center justify-between">
+    <nav className="navbar flex w-full items-center justify-between py-4">
       <ul className="flex-1 list-none items-center justify-start sm:flex">
         <li className="cursor-pointer font-poppins">
-          <a onClick={handleHomeClick} className="text-white">
+          <a onClick={handleHomeClick} className="text-xl text-white">
             Track<em className="text-green-gradient font-bold">Tide</em>
           </a>
         </li>
