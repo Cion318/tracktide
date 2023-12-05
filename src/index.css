@@ -8,6 +8,7 @@
   font-family: "Poppins", sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  padding: 2rem;
 
   --black-gradient: linear-gradient(
     144.39deg,
@@ -48,6 +49,22 @@
   -webkit-text-fill-color: transparent;
 }
 
+.text-green-gradient {
+  background: radial-gradient(
+    64.18% 64.18% at 71.16% 35.69%,
+    #c6f68d 0.89%,
+    #aaf255 17.23%,
+    #90ee02 42.04%,
+    #75e900 55.12%,
+    #61d800 71.54%,
+    #41c300 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .bg-blue-gradient {
   background: linear-gradient(
     157.81deg,
@@ -57,6 +74,18 @@
     #7de7eb 29.82%,
     #5ce1e6 51.94%,
     #33bbcf 90.29%
+  );
+}
+
+.bg-green-gradient {
+  background: linear-gradient(
+    157.81deg,
+    #c6f68d -43.27%,
+    #aaf255 -21.24%,
+    #90ee02 12.19%,
+    #75e900 29.82%,
+    #61d800 51.94%,
+    #41c300 90.29%
   );
 }
 
@@ -86,7 +115,7 @@
   );
 }
 
-.bg-discount-gradient {
+.bg-banner-gradient {
   background: linear-gradient(125.17deg, #272727 0%, #11101d 100%);
 }
 
