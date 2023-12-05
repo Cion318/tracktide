@@ -15,9 +15,9 @@ const SearchBar = ({ onSearch }) => {
   }, [searchTerm, onSearch]);
 
   return (
-    <div className="flex">
+    <div className="flex sm:py-3">
       <input
-        className="focus:shadow-outline mr-1 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-100 shadow focus:outline-none"
+        className="mr-2 w-full appearance-none rounded border border-green-400 px-3 py-2 text-white"
         type="text"
         name="name"
         autoComplete="off"
@@ -25,7 +25,7 @@ const SearchBar = ({ onSearch }) => {
         onChange={handleSearchTermChange}
       />
       <button
-        className="focus:shadow-outline bg-green-gradient ml-1 rounded px-4 py-2 font-bold text-gray-100"
+        className="bg-green-gradient ml-2 rounded px-4 py-2"
         type="button"
         onClick={search}
       >

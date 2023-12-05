@@ -21,21 +21,21 @@ const PlayList = ({
 
   return (
     <>
-      <div className="flex">
+      <div className="flex sm:py-3">
         <input
-          className="focus:shadow-outline mr-1 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-100 shadow focus:outline-none"
+          className="mr-2 w-full appearance-none rounded border border-green-400 px-3 py-2 text-white"
           type="text"
           value={playlistName}
           onChange={handleNameChange}
         ></input>
         <button
-          className="focus:shadow-outline bg-green-gradient ml-1 rounded px-4 py-2 font-bold text-gray-100"
+          className="bg-green-gradient ml-2 rounded px-[17px] py-2"
           onClick={onSave}
         >
           <FontAwesomeIcon icon={faSave} />
         </button>
       </div>
-      <div className="h-[80vh] overflow-y-scroll">
+      <div className="h-[75vh] overflow-y-scroll">
         <TrackList
           tracks={playlistTracks}
           onAdd={onAdd}

@@ -40,8 +40,10 @@ const Track = ({ track, onAdd, onRemove, isRemovable }) => {
         <img className="w-[160px]" src={track.albumCover} />
       </div>
       <div className="p-2 text-left">
-        <h2 className="text-xl">{track.name}</h2>
-        <h2 className="pt-3">
+        <h2 className="w-72 overflow-auto whitespace-nowrap text-xl">
+          {track.name}
+        </h2>
+        <h2 className="w-72 overflow-auto whitespace-nowrap pt-3">
           {track.artist} | {track.album}
         </h2>
         <div className="pt-4">

@@ -1,6 +1,6 @@
 import { faList, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import PlayList from "../components/PlayList";
@@ -9,7 +9,7 @@ import TrackList from "../components/TrackList";
 import Spotify from "../utils/spotify";
 
 const Main = () => {
-  const accessToken = Spotify.getAccessToken();
+  const accessToken = Spotify.getAccessToken("");
 
   const [showTracklist, setShowTracklist] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
@@ -17,6 +17,10 @@ const Main = () => {
   const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setPlaylistName("New Playlist");
+  }, []);
 
   const search = useCallback((term) => {
     Spotify.search(term).then(setSearchResults);
@@ -69,7 +73,7 @@ const Main = () => {
         {showTracklist && (
           <>
             <SearchBar onSearch={search} />
-            <div className="h-[80vh] overflow-y-scroll">
+            <div className="h-[75vh] overflow-y-scroll">
               <TrackList
                 tracks={searchResults}
                 onAdd={addTrack}
@@ -77,7 +81,7 @@ const Main = () => {
                 isRemovable={false}
               />
               <button
-                className="bg-green-gradient fixed bottom-6 left-6 rounded-[40px] px-5 py-4 text-3xl"
+                className="bg-green-gradient fixed bottom-8 left-8 rounded-full px-4 py-[13px] text-3xl"
                 onClick={handleSwitchClick}
               >
                 <FontAwesomeIcon icon={faList} />
@@ -97,7 +101,7 @@ const Main = () => {
               onSave={savePlaylist}
             />
             <button
-              className="bg-blue-gradient fixed bottom-6 left-6 rounded-[40px] px-5 py-4 text-3xl"
+              className="bg-blue-gradient fixed bottom-8 left-8 rounded-full px-4 py-[13px] text-3xl"
               onClick={handleSwitchClick}
             >
               <FontAwesomeIcon icon={faSearch} />
