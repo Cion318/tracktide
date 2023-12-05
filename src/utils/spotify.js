@@ -1,9 +1,12 @@
 const redirectUri = "http://localhost:5173/main/"; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
 //const redirectUri = "https://cion318.github.io/jammming-react/";
 let accessToken;
+let savedClientId;
 
 const Spotify = {
   getAccessToken(clientId) {
+    savedClientId = clientId;
+
     if (accessToken) {
       return accessToken;
     }
@@ -23,6 +26,9 @@ const Spotify = {
   },
 
   search(term, clientId) {
+    if (!clientId) {
+      clientId = savedClientId;
+    }
     const accessToken = Spotify.getAccessToken(clientId);
     return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
       headers: {
@@ -42,19 +48,23 @@ const Spotify = {
           artist: track.artists[0].name,
           album: track.album.name,
           uri: track.uri,
+          albumCover: track.album.images[0].url,
+          previewUrl: track.preview_url,
         }));
       });
   },
 
   savePlaylist(name, trackUris, clientId) {
-    if (!name || !trackUris.length) {
-      return;
+    if (!clientId) {
+      clientId = savedClientId;
     }
 
-    const accessToken = Spotify.getAccessToken(clientId);
-    const headers = {
-      Authorization: `Bearer ${accessToken}`,
-    };
+    if (!name || !trackUris.length) {
+      return Promise.reject("Invalid parameters");
+    }
+
+    const accessToken = Spotify.getAccessToken();
+    const headers = { Authorization: `Bearer ${accessToken}` };
     let userId;
 
     return fetch("https://api.spotify.com/v1/me", { headers: headers })
