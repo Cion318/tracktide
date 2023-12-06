@@ -7,7 +7,7 @@ const LoginInput = ({ setClientId }) => {
 
   return (
     <input
-      className="focus:shadow-outline mr-1 w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-100 shadow focus:outline-none"
+      className="focus:shadow-outline mr-1 w-full appearance-none rounded border bg-[#3b3b3b] px-3 py-2 leading-tight text-gray-100 shadow focus:outline-none"
       type="password"
       name="name"
       autoComplete="off"

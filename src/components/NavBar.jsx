@@ -8,7 +8,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="navbar flex w-full items-center justify-between py-4">
+    <nav className="navbar flex w-full items-center justify-between pb-6">
       <ul className="flex-1 list-none items-center justify-start sm:flex">
         <li className="cursor-pointer font-poppins">
           <a onClick={handleHomeClick} className="text-xl text-white">

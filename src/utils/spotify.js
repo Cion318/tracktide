@@ -1,9 +1,14 @@
-const redirectUri = "http://localhost:5173/main/"; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
+const redirectUri = "http://localhost:5173/"; // Have to add this to your accepted Spotify redirect URIs on the Spotify API.
 //const redirectUri = "https://cion318.github.io/jammming-react/";
 let accessToken;
 let savedClientId;
 
 const Spotify = {
+  checkAccessToken() {
+    console.log(`LOG (Spotify.js): ${accessToken}`);
+    return accessToken ? true : false;
+  },
+
   getAccessToken(clientId) {
     savedClientId = clientId;
 
@@ -21,7 +26,26 @@ const Spotify = {
       return accessToken;
     } else {
       const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
-      window.location = accessUrl;
+      //window.location = accessUrl;
+      // Open a new window
+      const authWindow = window.open(accessUrl, "_blank");
+
+      // Check for the access token in the new window's location
+      const checkAccessToken = () => {
+        const newLocation = authWindow.location.href;
+        const newAccessTokenMatch = newLocation.match(/access_token=([^&]*)/);
+
+        if (newAccessTokenMatch) {
+          accessToken = newAccessTokenMatch[1];
+          authWindow.close(); // Close the new window once the token is found
+        } else {
+          // If the token is not found, check again after a delay
+          setTimeout(checkAccessToken, 100);
+        }
+      };
+
+      // Start checking for the access token
+      checkAccessToken();
     }
   },
 
