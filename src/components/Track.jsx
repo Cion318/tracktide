@@ -35,15 +35,15 @@ const Track = ({ track, onAdd, onRemove, isRemovable }) => {
   };
 
   return (
-    <div className="my-2 flex items-center border border-gray-800 pr-7">
-      <div className="sm:p-2">
-        <img className="hidden sm:block sm:w-[160px]" src={track.albumCover} />
+    <div className="my-2 flex items-center justify-between border border-gray-800 pr-7 sm:justify-between">
+      <div className="hidden sm:block sm:p-2 ">
+        <img className="sm:w-[160px]" src={track.albumCover} />
       </div>
       <div className="p-2 text-left">
-        <h2 className="w-52 overflow-auto whitespace-nowrap sm:w-72 sm:text-xl">
+        <h2 className="w-52 overflow-auto whitespace-nowrap sm:w-72 sm:text-xl md:w-96 md:text-2xl lg:w-52">
           {track.name}
         </h2>
-        <h2 className="overflow-auto whitespace-nowrap pt-3 text-sm sm:w-72">
+        <h2 className="md:text-md w-52 overflow-auto whitespace-nowrap pt-3 text-sm sm:w-72 md:w-96 lg:w-52">
           {track.artist} | {track.album}
         </h2>
         <div className="sm:pt-4">

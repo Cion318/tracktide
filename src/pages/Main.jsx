@@ -12,9 +12,20 @@ const Main = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState("");
   const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     setPlaylistName("New Playlist");
+
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const search = useCallback((term) => {
@@ -63,29 +74,31 @@ const Main = () => {
 
   return (
     <>
-      <div className="">
-        {showTracklist && (
-          <>
+      <div className="xl:flex xl:justify-around">
+        {(screenWidth >= 1280 || showTracklist) && (
+          <div className="xl:mr-5 xl:block">
             <SearchBar onSearch={search} />
-            <div className="h-[65vh] overflow-y-scroll">
+            <div className="h-[65vh] overflow-y-scroll xl:h-[80vh]">
               <TrackList
                 tracks={searchResults}
                 onAdd={addTrack}
                 onRemove={removeTrack}
                 isRemovable={false}
               />
-              <button
-                className="bg-green-gradient fixed bottom-8 left-8 rounded-full px-3 py-2 sm:px-4 sm:py-[13px] sm:text-3xl"
-                onClick={handleSwitchClick}
-              >
-                <FontAwesomeIcon icon={faList} />
-              </button>
+              {screenWidth < 1280 && (
+                <button
+                  className="bg-green-gradient fixed bottom-8 left-8 rounded-full px-3 py-2 sm:px-4 sm:py-[13px] sm:text-3xl"
+                  onClick={handleSwitchClick}
+                >
+                  <FontAwesomeIcon icon={faList} />
+                </button>
+              )}
             </div>
-          </>
+          </div>
         )}
 
-        {!showTracklist && (
-          <>
+        {(screenWidth >= 1280 || !showTracklist) && (
+          <div className="xl:ml-5 xl:block">
             <PlayList
               playlistName={playlistName}
               playlistTracks={playlistTracks}
@@ -94,13 +107,15 @@ const Main = () => {
               onRemove={removeTrack}
               onSave={savePlaylist}
             />
-            <button
-              className="bg-blue-gradient fixed bottom-8 left-8 rounded-full px-3 py-2 sm:px-4 sm:py-[13px] sm:text-3xl"
-              onClick={handleSwitchClick}
-            >
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
-          </>
+            {screenWidth < 1280 && (
+              <button
+                className="bg-blue-gradient fixed bottom-8 left-8 rounded-full px-3 py-2 sm:px-4 sm:py-[13px] sm:text-3xl"
+                onClick={handleSwitchClick}
+              >
+                <FontAwesomeIcon icon={faSearch} />
+              </button>
+            )}
+          </div>
         )}
       </div>
     </>
