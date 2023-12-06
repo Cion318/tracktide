@@ -6,23 +6,29 @@ import HomeForm from "../components/HomeForm";
 const Home = () => {
   return (
     <div>
-      <section className="">
+      <section className="lg:flex xl:mx-10 2xl:mx-40">
         {/* Left Side */}
-        <div className="my-4 flex flex-wrap items-center justify-start sm:my-10 sm:px-6">
+        <div className="my-4 flex flex-wrap items-center justify-start sm:my-10 sm:px-6 lg:pt-10">
           {/* Chips */}
           <div className="bg-banner-gradient mr-4 rounded-[10px]">
-            <p className="px-3 py-1 text-[12px] text-dimWhite">Easy</p>
+            <p className="px-3 py-1 text-[12px] text-dimWhite sm:px-4 sm:text-sm">
+              Easy
+            </p>
           </div>
           <div className="bg-banner-gradient mr-4 rounded-[10px]">
-            <p className="px-3 py-1 text-[12px] text-dimWhite">Fast</p>
+            <p className="px-3 py-1 text-[12px] text-dimWhite sm:px-4 sm:text-sm">
+              Fast
+            </p>
           </div>
           <div className="bg-banner-gradient rounded-[10px]">
-            <p className="px-3 py-1 text-[12px] text-dimWhite">Reliable</p>
+            <p className="px-3 py-1 text-[12px] text-dimWhite sm:px-4 sm:text-sm">
+              Reliable
+            </p>
           </div>
 
           {/* Hero */}
           <div className="my-4 text-left">
-            <h1 className="text-3xl font-semibold leading-[45px] text-white sm:text-[44px] sm:leading-[70px] md:text-5xl">
+            <h1 className="text-3xl font-semibold leading-[45px] text-white sm:text-[44px] sm:leading-[70px] md:text-5xl md:leading-[75px]">
               Your Next
               <br />
               <span className="text-green-gradient">Spotify Playlist</span>
