@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const LoginButton = ({ onClick }) => {
   return (
     <button
-      className="focus:shadow-outline bg-green-gradient ml-1 rounded px-4 py-2 font-bold text-gray-100"
+      className="bg-green-gradient ml-1 rounded px-2 py-1 font-bold text-white"
       type="button"
       onClick={onClick}
     >

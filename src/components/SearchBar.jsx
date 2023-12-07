@@ -17,7 +17,7 @@ const SearchBar = ({ onSearch }) => {
   return (
     <div className="flex sm:py-3">
       <input
-        className="mr-2 w-full appearance-none rounded border border-green-400 bg-[#3b3b3b] px-3 py-2 text-white"
+        className="mr-2 w-full appearance-none rounded border border-green-400 bg-[#3b3b3b] px-2 text-white"
         type="text"
         name="name"
         autoComplete="off"

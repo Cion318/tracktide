@@ -24,7 +24,7 @@ const HomeForm = () => {
   };
 
   return (
-    <div className="bg-green-gradient flex h-[280px] w-[280px] cursor-pointer items-center justify-center rounded-full p-[2px] sm:h-[360px] sm:w-[360px] md:h-[400px] md:w-[400px]">
+    <div className="bg-green-gradient flex h-[270px] w-[270px] cursor-pointer items-center justify-center rounded-full p-[2px] sm:h-[360px] sm:w-[360px]">
       <div className="flex h-[100%] w-[100%] flex-col items-center justify-center rounded-full bg-primary">
         <div className="items-start justify-center">
           <p className="py-2 font-poppins text-2xl font-medium sm:text-4xl">
