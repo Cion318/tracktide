@@ -8,10 +8,13 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="navbar flex w-full items-center justify-between pb-6 sm:mx-6 sm:mt-4 xl:mx-10 xl:px-6 2xl:mx-40">
-      <ul className="flex-1 list-none items-center justify-start sm:flex">
+    <nav className="mb-8 sm:mb-16">
+      <ul className="flex list-none items-center justify-center sm:mr-[350px] md:mr-[350px] lg:mr-[750px] xl:mr-[850px] 2xl:mr-[970px]">
         <li className="cursor-pointer font-poppins">
-          <a onClick={handleHomeClick} className="text-xl text-white">
+          <a
+            onClick={handleHomeClick}
+            className="text-lg text-white sm:text-xl"
+          >
             Track<em className="text-green-gradient font-bold">Tide</em>
           </a>
         </li>
