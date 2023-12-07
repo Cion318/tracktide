@@ -34,9 +34,7 @@ const Main = () => {
 
   const addTrack = useCallback(
     (track) => {
-      console.log(`Log Main.jsx: addTrack being called.`);
       if (playlistTracks.some((savedTrack) => savedTrack.id === track.id)) {
-        console.log(`Log Main.jsx: Track already in playlist.`);
         return;
       }
 
@@ -74,20 +72,20 @@ const Main = () => {
 
   return (
     <>
-      <div className="xl:flex xl:justify-around">
-        {(screenWidth >= 1280 || showTracklist) && (
-          <div className="xl:mr-5 xl:block">
+      <div className="flex justify-center lg:gap-10">
+        {(screenWidth >= 1024 || showTracklist) && (
+          <div className="">
             <SearchBar onSearch={search} />
-            <div className="h-[65vh] overflow-y-scroll xl:h-[80vh]">
+            <div className="h-[65vh] w-[290px] overflow-y-scroll sm:w-[445px] md:w-[450px] lg:w-[404px] xl:h-[80vh] xl:w-[454px] 2xl:w-[512px]">
               <TrackList
                 tracks={searchResults}
                 onAdd={addTrack}
                 onRemove={removeTrack}
                 isRemovable={false}
               />
-              {screenWidth < 1280 && (
+              {screenWidth < 1024 && (
                 <button
-                  className="bg-green-gradient fixed bottom-8 left-8 rounded-full px-3 py-2 sm:px-4 sm:py-[13px] sm:text-3xl"
+                  className="bg-green-gradient fixed bottom-10 rounded-full px-3 py-2 sm:px-4 sm:py-[13px] sm:text-xl md:left-40"
                   onClick={handleSwitchClick}
                 >
                   <FontAwesomeIcon icon={faList} />
@@ -97,8 +95,8 @@ const Main = () => {
           </div>
         )}
 
-        {(screenWidth >= 1280 || !showTracklist) && (
-          <div className="xl:ml-5 xl:block">
+        {(screenWidth >= 1024 || !showTracklist) && (
+          <div>
             <PlayList
               playlistName={playlistName}
               playlistTracks={playlistTracks}
@@ -107,9 +105,9 @@ const Main = () => {
               onRemove={removeTrack}
               onSave={savePlaylist}
             />
-            {screenWidth < 1280 && (
+            {screenWidth < 1024 && (
               <button
-                className="bg-blue-gradient fixed bottom-8 left-8 rounded-full px-3 py-2 sm:px-4 sm:py-[13px] sm:text-3xl"
+                className="bg-blue-gradient fixed bottom-10 rounded-full px-3 py-2 sm:px-4 sm:py-[13px] sm:text-xl md:left-40"
                 onClick={handleSwitchClick}
               >
                 <FontAwesomeIcon icon={faSearch} />

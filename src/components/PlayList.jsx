@@ -23,7 +23,7 @@ const PlayList = ({
     <>
       <div className="flex sm:py-3">
         <input
-          className="mr-2 w-full appearance-none rounded border border-green-400 bg-[#3b3b3b] px-3 py-2 text-white"
+          className="mr-2 w-full appearance-none rounded border border-green-400 bg-[#3b3b3b] px-2 text-white"
           type="text"
           value={playlistName}
           onChange={handleNameChange}
@@ -35,7 +35,7 @@ const PlayList = ({
           <FontAwesomeIcon icon={faSave} />
         </button>
       </div>
-      <div className="h-[65vh] overflow-y-scroll">
+      <div className="h-[65vh] w-[290px] overflow-y-scroll sm:w-[445px] md:w-[450px] lg:w-[404px] xl:w-[454px] 2xl:w-[512px]">
         <TrackList
           tracks={playlistTracks}
           onAdd={onAdd}
